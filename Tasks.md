@@ -13,8 +13,7 @@
   - Navbar
     - Sidebar as sub-component
   - Home
-  - Destination
-  - Crew
-  - Technology
+    - TextEditorWindow
+    - PreviewWindow
 - Add GlobalStyles to index.js to pass basic styling.
   - Pass margin/padding 0px along with color variables.

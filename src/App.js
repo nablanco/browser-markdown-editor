@@ -10,13 +10,13 @@ const GlobalStyle = createGlobalStyle`
 
 const StyledComponent = styled``;
 
-function App() {
+const App = () => {
   return (
     <>
       <GlobalStyle />
       <StyledComponent></StyledComponent>
     </>
   );
-}
+};
 
 export default App;
