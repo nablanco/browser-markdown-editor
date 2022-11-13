@@ -1,3 +1,16 @@
+In Browser Markdown Editor - Tasks
+
+Outstanding Issues:
+
+- Build Theme context for Dark Mode
+- Build Navbar
+  - Build Sidebar
+    - Needs to push Home component to side when active
+- Build Home
+  - Build TextEditor (Left) and Preview (Right) windows.
+- Figure out how the hell to convert markdown to html
+- Figure out how to CRUD markdown files from LocalStorage
+
 1. Set up project (feature/setup)
 
 - Install create-reacte-app
