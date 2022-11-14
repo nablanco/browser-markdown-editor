@@ -1,6 +1,8 @@
 import React from "react";
 import styled, { createGlobalStyle } from "styled-components";
 
+import Navigation from "./components/Navigation/Navigation";
+
 const GlobalStyle = createGlobalStyle`
   body {
     margin: 0px;
@@ -14,7 +16,9 @@ const App = () => {
   return (
     <>
       <GlobalStyle />
-      <StyledComponent></StyledComponent>
+      <StyledComponent>
+        <Navigation></Navigation>
+      </StyledComponent>
     </>
   );
 };

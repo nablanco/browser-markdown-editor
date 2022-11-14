@@ -30,3 +30,13 @@ Outstanding Issues:
     - PreviewWindow
 - Add GlobalStyles to index.js to pass basic styling.
   - Pass margin/padding 0px along with color variables.
+
+2. Set up navbar (feature/setup)
+
+- Create navbar layout and style
+  - Import assets from asset folder
+  - Ignore functionaly of buttons for now
+- Create sidebar layout and style
+  - Import assets from asset folder
+  - Ignore functionaly of buttons for now
+- Bring in sidebar button functionality
