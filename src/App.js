@@ -1,25 +1,32 @@
 import React from "react";
-import styled, { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
+import { dark } from "./themes/themes.styled";
 
-import Navigation from "./components/Navigation/Navigation";
+// import Navigation from "./components/Navigation/Navigation";
 
 const GlobalStyle = createGlobalStyle`
   body {
     margin: 0px;
-    padding: 0px
+    padding: 0px;
+    background-color: ${({ theme }) => theme.background};
+    color: ${({ theme }) => theme.color}
   }
 `;
 
-const StyledComponent = styled``;
+const TestThemeButton = styled.button``;
+
+const StyledComponent = styled.div``;
 
 const App = () => {
   return (
-    <>
+    <ThemeProvider theme={dark}>
       <GlobalStyle />
       <StyledComponent>
-        <Navigation></Navigation>
+        Poop Palace
+        <TestThemeButton>Theme Test</TestThemeButton>
+        {/* <Navigation /> */}
       </StyledComponent>
-    </>
+    </ThemeProvider>
   );
 };
 

@@ -31,7 +31,15 @@ Outstanding Issues:
 - Add GlobalStyles to index.js to pass basic styling.
   - Pass margin/padding 0px along with color variables.
 
-2. Set up navbar (feature/setup)
+2. Theme context (feature/themes)
+
+- Create theme context to enable dark mode theme
+  - Create theme.styled.js file for light and dark theme objects. This will supply theme context with styles.
+    - Add basic light and dark theme for testing
+  - Wrap App contents with ThemeProvider.
+    - Temporarily set theme={light} and switch to dark to test functionlity. (Passed)
+
+3. Navbar (feature/setup)
 
 - Create navbar layout and style
   - Import assets from asset folder

@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 
-const StyledNavigation = styled``;
+const StyledNavigation = styled.div``;
 
 const Navigation = () => {
   return (
