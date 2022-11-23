@@ -7,15 +7,8 @@ const StyledNavbar = styled.div`
   border-bottom: 1px solid grey;
 `;
 
-const TestThemeButton = styled.button``;
-
 const Navbar = () => {
-  return (
-    <StyledNavbar>
-      Poop Palace
-      <TestThemeButton>Theme Test</TestThemeButton>
-    </StyledNavbar>
-  );
+  return <StyledNavbar></StyledNavbar>;
 };
 
 export default Navbar;

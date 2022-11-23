@@ -34,10 +34,26 @@ Outstanding Issues:
 2. Theme context (feature/themes)
 
 - Create theme context to enable dark mode theme
-  - Create theme.styled.js file for light and dark theme objects. This will supply theme context with styles.
-    - Add basic light and dark theme for testing
-  - Wrap App contents with ThemeProvider.
-    - Temporarily set theme={light} and switch to dark to test functionlity. (Passed)
+
+  - General thoughts:
+    - Focus on using the basic React Context API and hooks, instead of using Styled Components ThemeProvider. While ThemeProvider is very useful when using Styled Components, it is more important to master the tools of React.
+  - Create themes.js.
+    - Add basic light and dark themes for testing.
+  - Create ThemeContext.js
+    - Serves as the repository for theme context related logic.
+      - Contains :
+        - createContext to access React context API
+        - ThemeContextWrapper which is a component used to wrap all relevant lower order components. It is added in the index, within the <React.StrictMode>.
+          - useState to manage theme state.
+          - useEffect (1) to set current theme to local storage on theme change.
+          - useEffect (2) to set theme to the theme held in local storage (if it exists).
+          - handleThemeChange to handle.. theme... change....
+  - useContext hook.
+    - Now with context given to the entire app, it can be accessed using the useContext hook. Since both theme and handleThemeChange are passed in context, these are destructered as needed. handleThemeChange is obviously only needed for the ThemeSelection component which contains the theme switch.
+
+- Need CreateContext somewhere in main App (not sure if in or outside app component)
+- Focus on using React Context, as opposed to Styled Components.
+  - So use React's ThemeContext.Provider vs SC's ThemeProvider.
 
 3. Navbar (feature/setup)
 
