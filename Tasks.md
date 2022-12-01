@@ -49,11 +49,8 @@ Outstanding Issues:
           - useEffect (2) to set theme to the theme held in local storage (if it exists).
           - handleThemeChange to handle.. theme... change....
   - useContext hook.
-    - Now with context given to the entire app, it can be accessed using the useContext hook. Since both theme and handleThemeChange are passed in context, these are destructered as needed. handleThemeChange is obviously only needed for the ThemeSelection component which contains the theme switch.
-
-- Need CreateContext somewhere in main App (not sure if in or outside app component)
-- Focus on using React Context, as opposed to Styled Components.
-  - So use React's ThemeContext.Provider vs SC's ThemeProvider.
+    - Now with context passed to the entire app, it can be accessed using the useContext hook in the specific components that need it. Since both theme and handleThemeChange are passed in context, these are destructered as needed. handleThemeChange is obviously only needed for the ThemeSelection component which contains the theme switch.
+  - Fill out light/dark themes using Figma file
 
 3. Navbar (feature/setup)
 
