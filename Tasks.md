@@ -30,3 +30,34 @@ Outstanding Issues:
     - PreviewWindow
 - Add GlobalStyles to index.js to pass basic styling.
   - Pass margin/padding 0px along with color variables.
+
+2. Theme context (feature/themes)
+
+- Create theme context to enable dark mode theme
+
+  - General thoughts:
+    - Focus on using the basic React Context API and hooks, instead of using Styled Components ThemeProvider. While ThemeProvider is very useful when using Styled Components, it is more important to master the tools of React.
+  - Create themes.js.
+    - Add basic light and dark themes for testing.
+  - Create ThemeContext.js
+    - Serves as the repository for theme context related logic.
+      - Contains :
+        - createContext to access React context API
+        - ThemeContextWrapper which is a component used to wrap all relevant lower order components. It is added in the index, within the <React.StrictMode>.
+          - useState to manage theme state.
+          - useEffect (1) to set current theme to local storage on theme change.
+          - useEffect (2) to set theme to the theme held in local storage (if it exists).
+          - handleThemeChange to handle.. theme... change....
+  - useContext hook.
+    - Now with context passed to the entire app, it can be accessed using the useContext hook in the specific components that need it. Since both theme and handleThemeChange are passed in context, these are destructered as needed. handleThemeChange is obviously only needed for the ThemeSelection component which contains the theme switch.
+  - Fill out light/dark themes using Figma file
+
+3. Navbar (feature/setup)
+
+- Create navbar layout and style
+  - Import assets from asset folder
+  - Ignore functionaly of buttons for now
+- Create sidebar layout and style
+  - Import assets from asset folder
+  - Ignore functionaly of buttons for now
+- Bring in sidebar button functionality
