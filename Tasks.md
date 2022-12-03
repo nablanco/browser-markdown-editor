@@ -54,10 +54,17 @@ Outstanding Issues:
 
 3. Navbar (feature/navigation)
 
-- Create navbar layout and style
-  - Import assets from asset folder
-  - Ignore functionaly of buttons for now
-- Create sidebar layout and style
-  - Import assets from asset folder
-  - Ignore functionaly of buttons for now
-- Bring in sidebar button functionality
+- Navigation component.
+  - Creat component that will house the Sidebar and Navbar components.
+  - Sidebar comes first as it will need to push future components aside when opened.
+- Navbar component.
+  - Used for navigation and document naming/deletion.
+  - Styled according to Figma file.
+    - Navbar does not change theme.
+  - Import assets from asset folder.
+- Sidebar component.
+  - Used for creating new document, selecting an existing document, and selecting theme.
+  - Import assets from asset folder.
+- ThemeSelection component.
+  - Sets theme for main component.
+  - Imported into Sidebar.
