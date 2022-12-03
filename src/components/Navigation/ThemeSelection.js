@@ -6,7 +6,7 @@ const StyledThemeSelection = styled.div``;
 
 const TestThemeButton = styled.button`
   color: ${(props) => props.theme.color.markdownbody};
-  background-color: ${(props) => props.theme.background};
+  background-color: ${(props) => props.theme.background.main};
 `;
 
 const ThemeSelection = () => {
