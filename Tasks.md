@@ -52,7 +52,7 @@ Outstanding Issues:
     - Now with context passed to the entire app, it can be accessed using the useContext hook in the specific components that need it. Since both theme and handleThemeChange are passed in context, these are destructered as needed. handleThemeChange is obviously only needed for the ThemeSelection component which contains the theme switch.
   - Fill out light/dark themes using Figma file
 
-3. Navbar (feature/setup)
+3. Navbar (feature/navigation)
 
 - Create navbar layout and style
   - Import assets from asset folder
