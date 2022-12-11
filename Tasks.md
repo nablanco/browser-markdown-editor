@@ -10,6 +10,9 @@ Outstanding Issues:
   - Build TextEditor (Left) and Preview (Right) windows.
 - Figure out how the hell to convert markdown to html
 - Figure out how to CRUD markdown files from LocalStorage
+- Make navbar document name input save new file name when users presses "enter".
+  - When user begins to edit the document name, the save button in the nav will turn orange, indicating need to save.
+  - When user presses "enter" the new file name will be saved to localStorage and the save button will return to normal state styling.
 
 1. Set up project (feature/setup)
 
@@ -51,17 +54,23 @@ Outstanding Issues:
   - useContext hook.
     - Now with context passed to the entire app, it can be accessed using the useContext hook in the specific components that need it. Since both theme and handleThemeChange are passed in context, these are destructered as needed. handleThemeChange is obviously only needed for the ThemeSelection component which contains the theme switch.
   - Fill out light/dark themes using Figma file
+  - Add ThemeContext into Main component
+    - Main component is where all themes will be passed and executed.
+    - This component will be the parent to the markdown editor and preview.
 
 3. Navbar (feature/navigation)
 
 - Navigation component.
   - Creat component that will house the Sidebar and Navbar components.
-  - Sidebar comes first as it will need to push future components aside when opened.
+  - Sidebar comes first in JSX as it will need to push future components aside when opened.
 - Navbar component.
   - Used for navigation and document naming/deletion.
   - Styled according to Figma file.
     - Navbar does not change theme.
   - Import assets from asset folder.
+  - Create Document Input field.
+    - Users use this to quickly view/edit the name of their markdown file.
+    - Begin by simply storing input to localstorage. Later connect to markdown file.
 - Sidebar component.
   - Used for creating new document, selecting an existing document, and selecting theme.
   - Import assets from asset folder.

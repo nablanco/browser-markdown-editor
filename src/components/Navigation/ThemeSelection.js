@@ -14,7 +14,6 @@ const ThemeSelection = () => {
 
   return (
     <StyledThemeSelection theme={theme}>
-      {console.log(theme.color)}
       <TestThemeButton theme={theme} onClick={() => handleThemeChange()}>
         {theme.name}
       </TestThemeButton>
