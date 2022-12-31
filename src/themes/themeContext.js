@@ -7,7 +7,9 @@ export const ThemeContext = createContext(themes.light);
 /* eslint-disable react/prop-types */
 
 const ThemeContextWrapper = ({ children }) => {
-  const [theme, setTheme] = useState(themes.light);
+  const [theme, setTheme] = useState(
+    JSON.parse(localStorage.getItem("theme")) || themes.dark
+  );
 
   useEffect(() => {
     const currentTheme = JSON.parse(localStorage.getItem("theme"));

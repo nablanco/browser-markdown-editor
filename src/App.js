@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 
 import Navigation from "./components/Navigation/Navigation";
@@ -9,13 +9,19 @@ const GlobalStyle = createGlobalStyle`
     margin: 0px;
     padding: 0px;
     font-family: 'Roboto', sans-serif;
+    overflow-x: hidden;
   }
 `;
 
 const StyledApp = styled.div``;
 
 const App = () => {
+  const [showSidebar, setShowSidebar] = useState(false);
   const inputRef = useRef(null);
+
+  const handleSidebar = () => {
+    setShowSidebar(showSidebar ? false : true);
+  };
 
   const handleEnter = () => {
     inputRef.current.focus();
@@ -26,8 +32,12 @@ const App = () => {
     <>
       <GlobalStyle />
       <StyledApp>
-        <Navigation handleEnter={handleEnter} />
-        <Home ref={inputRef} inputRef={inputRef} handleEnter={handleEnter} />
+        <Navigation
+          showSidebar={showSidebar}
+          handleSidebar={handleSidebar}
+          handleEnter={handleEnter}
+        />
+        <Home ref={inputRef} inputRef={inputRef} showSidebar={showSidebar} />
       </StyledApp>
     </>
   );

@@ -2,15 +2,19 @@ import React from "react";
 import styled from "styled-components";
 
 import Navbar from "./Navbar";
-// import Sidebar from "./Sidebar";
+import Sidebar from "./Sidebar";
 
 const StyledNavigation = styled.div``;
 
-const Navigation = ({ handleEnter }) => {
+const Navigation = ({ showSidebar, handleSidebar, handleEnter }) => {
   return (
     <StyledNavigation>
-      {/* <Sidebar /> */}
-      <Navbar handleEnter={handleEnter} />
+      <Sidebar showSidebar={showSidebar} />
+      <Navbar
+        showSidebar={showSidebar}
+        handleSidebar={handleSidebar}
+        handleEnter={handleEnter}
+      />
     </StyledNavigation>
   );
 };

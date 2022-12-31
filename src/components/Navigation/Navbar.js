@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import iconMenu from "../../assets/icon-menu.svg";
-import iconDelete from "../../assets/icon-delete.svg";
+import iconClose from "../../assets/icon-close.svg";
 import iconDocument from "../../assets/icon-document.svg";
 
-import ThemeSelection from "./ThemeSelection";
+import SaveButton from "./SaveButton";
+import DeleteButton from "./DeleteButton";
+import { DocumentContext } from "../../documents/documentContext";
 
 const StyledNavbar = styled.div`
   width: 100vw;
@@ -14,6 +16,10 @@ const StyledNavbar = styled.div`
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
+  transform: translateX(
+    ${({ showSidebar }) => (showSidebar ? "250px" : "0px")}
+  );
+  transition: 0.3s;
 `;
 const LeftContainer = styled.div`
   display: flex;
@@ -26,6 +32,10 @@ const MenuButton = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  &:hover {
+    background-color: #e46643;
+  }
 `;
 const MenuIcon = styled.img``;
 const Title = styled.div`
@@ -90,18 +100,15 @@ const DocumentNameEditor = styled.input`
     border-bottom: 1px solid #ffffff;
   }
 `;
-const RightContainer = styled.div``;
-const DeleteButton = styled.div``;
-const DeleteIcon = styled.img``;
+const RightContainer = styled.div`
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+`;
 
-const Navbar = ({ handleEnter }) => {
-  const [documentName, setDocumentName] = useState("welcome.md");
-
-  const handleChange = (event) => {
-    setDocumentName(event.target.value);
-
-    console.log("document name: ", event.target.value);
-  };
+const Navbar = ({ showSidebar, handleSidebar, handleEnter }) => {
+  const { activeDocument, onDocumentNameChange } = useContext(DocumentContext);
 
   const handleKeyUp = (event) => {
     if (event.keyCode === 13) {
@@ -112,10 +119,10 @@ const Navbar = ({ handleEnter }) => {
   };
 
   return (
-    <StyledNavbar>
+    <StyledNavbar showSidebar={showSidebar}>
       <LeftContainer>
-        <MenuButton>
-          <MenuIcon src={iconMenu} />
+        <MenuButton onClick={handleSidebar}>
+          <MenuIcon src={showSidebar ? iconClose : iconMenu} />
         </MenuButton>
         <Title>MARKDOWN</Title>
         <Divider />
@@ -124,20 +131,17 @@ const Navbar = ({ handleEnter }) => {
           <DocumentNameContainer>
             Document Name
             <DocumentNameEditor
-              value={documentName}
+              value={activeDocument.name}
               type="text"
-              onChange={handleChange}
+              onChange={onDocumentNameChange}
               onKeyUp={handleKeyUp}
             />
           </DocumentNameContainer>
         </DocumentContainer>
-        <button onClick={() => handleEnter()}>Focus on input</button>
       </LeftContainer>
-      <ThemeSelection />
       <RightContainer>
-        <DeleteButton>
-          <DeleteIcon src={iconDelete}></DeleteIcon>
-        </DeleteButton>
+        <DeleteButton />
+        <SaveButton />
       </RightContainer>
     </StyledNavbar>
   );
