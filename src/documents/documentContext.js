@@ -110,7 +110,9 @@ const DocumentContextWrapper = ({ children }) => {
         return document.id !== activeDocument.id;
       })
     );
-    setActiveDocument(documents[0]);
+    documents.length == 0
+      ? setActiveDocument([])
+      : setActiveDocument(documents[0]);
   };
 
   // Activated on clicking any document listed in the Sidebar component
