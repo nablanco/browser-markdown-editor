@@ -11,6 +11,24 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Roboto', sans-serif;
     overflow-x: hidden;
   }
+
+  h1 {
+    font-family: 'Roboto Slab';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 42px;
+    color: #FFFFFF;
+  }
+
+  h2 {
+    color: green;
+  }
+
+
+  blockquote {
+    color: red
+  }
 `;
 
 const StyledApp = styled.div``;
@@ -37,7 +55,7 @@ const App = () => {
           handleSidebar={handleSidebar}
           handleEnter={handleEnter}
         />
-        <Home ref={inputRef} inputRef={inputRef} showSidebar={showSidebar} />
+        <Home inputRef={inputRef} showSidebar={showSidebar} />
       </StyledApp>
     </>
   );
