@@ -19,10 +19,10 @@ const StyledHome = styled.div`
   transition: 0.3s;
 `;
 
-const Border = styled.div`
+const Divider = styled.div`
   height: 100%;
   width: 1px;
-  background-color: #5a6069;
+  background-color: ${({ theme }) => theme.divider};
 `;
 
 const Home = ({ inputRef, showSidebar }) => {
@@ -31,7 +31,7 @@ const Home = ({ inputRef, showSidebar }) => {
   return (
     <StyledHome showSidebar={showSidebar} theme={theme}>
       <MarkdownEditorWindow ref={inputRef} />
-      <Border />
+      <Divider theme={theme} />
       <PreviewWindow />
     </StyledHome>
   );

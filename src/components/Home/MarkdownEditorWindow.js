@@ -3,13 +3,40 @@ import styled from "styled-components";
 import { ThemeContext } from "../../themes/themeContext";
 import { DocumentContext } from "../../documents/documentContext";
 
-const StyledEditor = styled.textarea`
+const StyledEditorContainer = styled.div`
+  display: flex;
+  flex-flow: column nowrap;
   height: 100%;
   width: 50%;
   outline: none;
   border: none;
-  color: ${(props) => props.theme.color.markdownbody};
-  background-color: ${(props) => props.theme.background.main};
+`;
+const TitleContainer = styled.div`
+  height: 42px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 2px;
+  padding-left: 16px;
+  display: flex;
+  align-items: center;
+  color: ${({ theme }) => theme.color.sectionheader};
+  background-color: ${({ theme }) => theme.background.sectionheader};
+`;
+const Editor = styled.textarea`
+  height: calc(100% - 120px);
+  padding-left: 16px;
+  outline: none;
+  border: none;
+  font-family: "Roboto Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  color: ${({ theme }) => theme.color.markdownbody};
+  background-color: ${({ theme }) => theme.background.main};
 `;
 
 const MarkdownEditorWindow = forwardRef((props, inputRef) => {
@@ -18,19 +45,22 @@ const MarkdownEditorWindow = forwardRef((props, inputRef) => {
     useContext(DocumentContext);
 
   return (
-    <StyledEditor
-      type="text"
-      value={
-        activeDocument.content
-          ? activeDocument.content
-          : "You delete all your work! Please create a new document in the sidebar :)"
-      }
-      onChange={onDocumentContentChange}
-      showSidebar={props.showSidebar}
-      ref={inputRef}
-      theme={theme}
-      {...props}
-    ></StyledEditor>
+    <StyledEditorContainer>
+      <TitleContainer theme={theme}>MARKDOWN</TitleContainer>
+      <Editor
+        type="text"
+        value={
+          activeDocument.content
+            ? activeDocument.content
+            : "You delete all your work! Please create a new document in the sidebar :)"
+        }
+        onChange={onDocumentContentChange}
+        showSidebar={props.showSidebar}
+        ref={inputRef}
+        theme={theme}
+        {...props}
+      />
+    </StyledEditorContainer>
   );
 });
 
