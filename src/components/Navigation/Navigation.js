@@ -6,7 +6,12 @@ import Sidebar from "./Sidebar";
 
 const StyledNavigation = styled.div``;
 
-const Navigation = ({ showSidebar, handleSidebar, handleEnter }) => {
+const Navigation = ({
+  showSidebar,
+  handleSidebar,
+  handleEnter,
+  setModalOpen,
+}) => {
   return (
     <StyledNavigation>
       <Sidebar showSidebar={showSidebar} />
@@ -14,6 +19,7 @@ const Navigation = ({ showSidebar, handleSidebar, handleEnter }) => {
         showSidebar={showSidebar}
         handleSidebar={handleSidebar}
         handleEnter={handleEnter}
+        setModalOpen={setModalOpen}
       />
     </StyledNavigation>
   );
