@@ -1,14 +1,15 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import Markdown from "markdown-to-jsx";
+import iconShowPreivew from "../../assets/icon-show-preview.svg";
 import { ThemeContext } from "../../themes/themeContext";
 import { DocumentContext } from "../../documents/documentContext";
 
-const StyledEditor = styled.div`
+const StyledPreview = styled.div`
   display: flex;
   flex-flow: column nowrap;
   height: 100%;
-  width: 50%;
+  width: ${({ showPreview }) => (showPreview ? "100%" : "50%")};
   color: ${(props) => props.theme.color.markdownbody};
   background-color: ${(props) => props.theme.background.main};
 `;
@@ -23,8 +24,29 @@ const TitleContainer = styled.div`
   padding-left: 16px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   color: ${({ theme }) => theme.color.sectionheader};
   background-color: ${({ theme }) => theme.background.sectionheader};
+`;
+
+const PreviewButton = styled.button`
+  height: 20px;
+  width: 18px;
+  margin-right: 24px;
+  padding: 0%;
+  background-color: ${({ theme }) => theme.background.sectionheader};
+  cursor: pointer;
+  border: none;
+
+  &:hover {
+    color: #e46643;
+  }
+`;
+const PreviewIcon = styled.img`
+  &:hover {
+    filter: invert(55%) sepia(52%) saturate(4781%) hue-rotate(339deg)
+      brightness(99%) contrast(80%);
+  }
 `;
 
 const MarkdownContainer = styled.div`
@@ -33,19 +55,28 @@ const MarkdownContainer = styled.div`
   overflow: auto;
 `;
 
-const MarkdownEditor = () => {
+const PreviewWindow = ({ showPreview, handlePreview }) => {
   const { theme } = useContext(ThemeContext);
   const { activeDocument } = useContext(DocumentContext);
 
   return (
-    <StyledEditor theme={theme} activeDocument={activeDocument}>
-      <TitleContainer theme={theme}>PREVIEW</TitleContainer>
+    <StyledPreview
+      theme={theme}
+      showPreview={showPreview}
+      activeDocument={activeDocument}
+    >
+      <TitleContainer theme={theme}>
+        PREVIEW
+        <PreviewButton theme={theme} onClick={() => handlePreview()}>
+          <PreviewIcon src={iconShowPreivew} />
+        </PreviewButton>
+      </TitleContainer>
       <MarkdownContainer>
         <Markdown>{activeDocument.content}</Markdown>
       </MarkdownContainer>
-    </StyledEditor>
+    </StyledPreview>
   );
 };
 
-MarkdownEditor.displayName = "MarkdownEditor";
-export default MarkdownEditor;
+PreviewWindow.displayName = "MarkdownEditor";
+export default PreviewWindow;

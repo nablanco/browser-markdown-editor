@@ -4,7 +4,7 @@ import { ThemeContext } from "../../themes/themeContext";
 import { DocumentContext } from "../../documents/documentContext";
 
 const StyledEditorContainer = styled.div`
-  display: flex;
+  display: ${({ showPreview }) => (showPreview ? "none" : "flex")};
   flex-flow: column nowrap;
   height: 100%;
   width: 50%;
@@ -45,7 +45,7 @@ const MarkdownEditorWindow = forwardRef((props, inputRef) => {
     useContext(DocumentContext);
 
   return (
-    <StyledEditorContainer>
+    <StyledEditorContainer showPreview={props.showPreview}>
       <TitleContainer theme={theme}>MARKDOWN</TitleContainer>
       <Editor
         type="text"
@@ -55,7 +55,6 @@ const MarkdownEditorWindow = forwardRef((props, inputRef) => {
             : "You delete all your work! Please create a new document in the sidebar :)"
         }
         onChange={onDocumentContentChange}
-        showSidebar={props.showSidebar}
         ref={inputRef}
         theme={theme}
         {...props}

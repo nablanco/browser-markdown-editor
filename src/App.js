@@ -170,7 +170,6 @@ const App = () => {
   return (
     <>
       <GlobalStyle theme={theme} />
-      {console.log(theme.color.htmlheaders)}
       <StyledApp>
         <Navigation
           showSidebar={showSidebar}
