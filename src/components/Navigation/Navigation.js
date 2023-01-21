@@ -6,11 +6,15 @@ import Sidebar from "./Sidebar";
 
 const StyledNavigation = styled.div``;
 
-const Navigation = () => {
+const Navigation = ({ showSidebar, handleSidebar, handleEnter }) => {
   return (
     <StyledNavigation>
-      <Sidebar />
-      <Navbar />
+      <Sidebar showSidebar={showSidebar} />
+      <Navbar
+        showSidebar={showSidebar}
+        handleSidebar={handleSidebar}
+        handleEnter={handleEnter}
+      />
     </StyledNavigation>
   );
 };
