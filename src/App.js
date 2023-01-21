@@ -1,7 +1,9 @@
 import React, { useContext, useRef, useState } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 import { ThemeContext } from "./themes/themeContext";
+// import Modal from "react-modal";
 
+import CustomModal from "./components/Modal/Modal";
 import Navigation from "./components/Navigation/Navigation";
 import Home from "./components/Home/Home";
 
@@ -156,6 +158,7 @@ const StyledApp = styled.div``;
 const App = () => {
   const { theme } = useContext(ThemeContext);
   const [showSidebar, setShowSidebar] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
   const inputRef = useRef(null);
 
   const handleSidebar = () => {
@@ -170,11 +173,13 @@ const App = () => {
   return (
     <>
       <GlobalStyle theme={theme} />
-      <StyledApp>
+      <StyledApp appElement={StyledApp}>
+        <CustomModal modalOpen={modalOpen} setModalOpen={setModalOpen} />
         <Navigation
           showSidebar={showSidebar}
           handleSidebar={handleSidebar}
           handleEnter={handleEnter}
+          setModalOpen={setModalOpen}
         />
         <Home inputRef={inputRef} showSidebar={showSidebar} />
       </StyledApp>

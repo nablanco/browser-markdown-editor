@@ -107,7 +107,7 @@ const RightContainer = styled.div`
   align-items: center;
 `;
 
-const Navbar = ({ showSidebar, handleSidebar, handleEnter }) => {
+const Navbar = ({ showSidebar, handleSidebar, handleEnter, setModalOpen }) => {
   const { activeDocument, onDocumentNameChange } = useContext(DocumentContext);
 
   const handleKeyUp = (event) => {
@@ -140,7 +140,7 @@ const Navbar = ({ showSidebar, handleSidebar, handleEnter }) => {
         </DocumentContainer>
       </LeftContainer>
       <RightContainer>
-        <DeleteButton />
+        <DeleteButton setModalOpen={setModalOpen} />
         <SaveButton />
       </RightContainer>
     </StyledNavbar>
