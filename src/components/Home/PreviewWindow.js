@@ -53,6 +53,7 @@ const PreviewIcon = styled.img`
 const MarkdownContainer = styled.div`
   height: calc(100% - 120px);
   padding-left: 16px;
+  padding-right: 24px;
   overflow: auto;
 `;
 

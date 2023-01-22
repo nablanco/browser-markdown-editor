@@ -51,12 +51,20 @@ const Title = styled.div`
   font-size: 15px;
   line-height: 18px;
   letter-spacing: 5px;
+
+  @media screen and (max-width: 1020px) {
+    display: none;
+  }
 `;
 const Divider = styled.div`
   height: 40px;
   margin-right: 24px;
   border-left: 1px solid #5a6069;
   align-self: center;
+
+  @media screen and (max-width: 1020px) {
+    display: none;
+  }
 `;
 const DocumentContainer = styled.div`
   height: 36px;
@@ -64,6 +72,10 @@ const DocumentContainer = styled.div`
   flex-flow: row nowrap;
   justify-content: center;
   align-self: center;
+
+  @media screen and (max-width: 1020px) {
+    margin-left: 24px;
+  }
 `;
 const DocumentIcon = styled.img`
   height: 16px;

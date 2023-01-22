@@ -82,10 +82,6 @@ const GlobalStyle = createGlobalStyle`
     font-size: 14px;
     line-height: 24px;
     padding-left: 9px;
-
-    &::before {
-      
-    }
   }
   ul li {
     font-family: 'Roboto Slab';
@@ -135,8 +131,6 @@ const GlobalStyle = createGlobalStyle`
     color: ${({ theme }) => theme.color.code};
   }
   pre {
-    display: flex;
-    align-items: center;
     margin: 0px;
     padding: 24px 24px 24px 20px;
     width: 90%;
@@ -144,6 +138,7 @@ const GlobalStyle = createGlobalStyle`
     background-color: ${({ theme }) => theme.background.blockquote};
   }
   pre code {
+    white-space: pre-wrap;
     font-family: 'Roboto Mono';
     font-style: normal;
     font-weight: 400;
