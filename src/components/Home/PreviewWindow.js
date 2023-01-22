@@ -60,11 +60,7 @@ const PreviewWindow = ({ showPreview, handlePreview }) => {
   const { activeDocument } = useContext(DocumentContext);
 
   return (
-    <StyledPreview
-      theme={theme}
-      showPreview={showPreview}
-      activeDocument={activeDocument}
-    >
+    <StyledPreview theme={theme} showPreview={showPreview}>
       <TitleContainer theme={theme}>
         PREVIEW
         <PreviewButton theme={theme} onClick={() => handlePreview()}>
@@ -72,7 +68,7 @@ const PreviewWindow = ({ showPreview, handlePreview }) => {
         </PreviewButton>
       </TitleContainer>
       <MarkdownContainer>
-        <Markdown>{activeDocument.content}</Markdown>
+        <Markdown>{activeDocument ? activeDocument.content : "asdf"}</Markdown>
       </MarkdownContainer>
     </StyledPreview>
   );

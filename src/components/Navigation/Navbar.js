@@ -131,7 +131,8 @@ const Navbar = ({ showSidebar, handleSidebar, handleEnter, setModalOpen }) => {
           <DocumentNameContainer>
             Document Name
             <DocumentNameEditor
-              value={activeDocument.name}
+              value={activeDocument ? activeDocument.name : ""}
+              disabled={!activeDocument}
               type="text"
               onChange={onDocumentNameChange}
               onKeyUp={handleKeyUp}

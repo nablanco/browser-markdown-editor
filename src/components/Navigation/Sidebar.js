@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import styled from "styled-components";
 import iconDocument from "../../assets/icon-document.svg";
 
@@ -83,30 +83,34 @@ const ThemeContainer = styled.div`
 const Sidebar = ({ showSidebar }) => {
   const { documents, changeActiveDocument } = useContext(DocumentContext);
 
+  useEffect(() => {
+    console.log(documents);
+  }, [documents]);
   return (
     <StyledSidebar showSidebar={showSidebar}>
       <DocumentsContainer>
         <DocumentsTitle>MY DOCUMENTS</DocumentsTitle>
         <CreateButton />
         <DocumentsList>
-          {documents.map((document) => {
-            return (
-              <DocumentLink
-                onClick={() => changeActiveDocument(document.id)}
-                key={document.id}
-              >
-                <DocumentIcon src={iconDocument} />
-                <DocumentInformation>
-                  <DocumentDate>{document.createdAt}</DocumentDate>
-                  <DocumentName>
-                    {document.name.length > 21
-                      ? document.name.slice(0, 20) + "..."
-                      : document.name}
-                  </DocumentName>
-                </DocumentInformation>
-              </DocumentLink>
-            );
-          })}
+          {documents &&
+            documents.map((document) => {
+              return (
+                <DocumentLink
+                  onClick={() => changeActiveDocument(document.id)}
+                  key={document.id}
+                >
+                  <DocumentIcon src={iconDocument} />
+                  <DocumentInformation>
+                    <DocumentDate>{document.createdAt}</DocumentDate>
+                    <DocumentName>
+                      {document.name.length > 21
+                        ? document.name.slice(0, 20) + "..."
+                        : document.name}
+                    </DocumentName>
+                  </DocumentInformation>
+                </DocumentLink>
+              );
+            })}
         </DocumentsList>
       </DocumentsContainer>
       <ThemeContainer>

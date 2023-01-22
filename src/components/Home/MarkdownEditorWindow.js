@@ -44,16 +44,13 @@ const MarkdownEditorWindow = forwardRef((props, inputRef) => {
   const { activeDocument, onDocumentContentChange } =
     useContext(DocumentContext);
 
+  console.log({ activeDocument });
   return (
     <StyledEditorContainer showPreview={props.showPreview}>
       <TitleContainer theme={theme}>MARKDOWN</TitleContainer>
       <Editor
         type="text"
-        value={
-          activeDocument.content
-            ? activeDocument.content
-            : "You delete all your work! Please create a new document in the sidebar :)"
-        }
+        value={activeDocument.content}
         onChange={onDocumentContentChange}
         ref={inputRef}
         theme={theme}
