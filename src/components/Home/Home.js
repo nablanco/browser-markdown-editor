@@ -19,11 +19,20 @@ const StyledHome = styled.div`
   );
   transition: 0.3s;
 `;
-
 const Divider = styled.div`
   height: 100%;
   width: 1px;
   background-color: ${({ theme }) => theme.divider};
+`;
+const CreateDocumentMessage = styled.div`
+  margin-top: 12px;
+  margin-left: 16px;
+  font-family: "Roboto Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  color: ${(props) => props.theme.color.markdownbody};
 `;
 
 const Home = ({ inputRef, showSidebar }) => {
@@ -47,7 +56,10 @@ const Home = ({ inputRef, showSidebar }) => {
           />
         </>
       ) : (
-        <div>Hey babes</div>
+        <CreateDocumentMessage theme={theme}>
+          Looks like you deleted everything! Please create a new document in the
+          sidebar :)
+        </CreateDocumentMessage>
       )}
     </StyledHome>
   );

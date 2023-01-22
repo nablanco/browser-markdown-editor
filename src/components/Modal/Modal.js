@@ -69,6 +69,11 @@ const CustomModal = ({ modalOpen, setModalOpen }) => {
       isOpen={modalOpen}
       onRequestClose={() => setModalOpen(false)}
       theme={theme}
+      style={{
+        overlay: {
+          backgroundColor: "rgba(124, 129, 135, .5)",
+        },
+      }}
     >
       <Header theme={theme}>Delete this document?</Header>
       <Text theme={theme}>

@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import Markdown from "markdown-to-jsx";
-import iconShowPreivew from "../../assets/icon-show-preview.svg";
+import iconShowPreview from "../../assets/icon-show-preview.svg";
+import iconHidePreview from "../../assets/icon-hide-preview.svg";
 import { ThemeContext } from "../../themes/themeContext";
 import { DocumentContext } from "../../documents/documentContext";
 
@@ -64,7 +65,7 @@ const PreviewWindow = ({ showPreview, handlePreview }) => {
       <TitleContainer theme={theme}>
         PREVIEW
         <PreviewButton theme={theme} onClick={() => handlePreview()}>
-          <PreviewIcon src={iconShowPreivew} />
+          <PreviewIcon src={showPreview ? iconHidePreview : iconShowPreview} />
         </PreviewButton>
       </TitleContainer>
       <MarkdownContainer>
