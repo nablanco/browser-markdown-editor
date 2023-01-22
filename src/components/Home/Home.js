@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import { ThemeContext } from "../../themes/themeContext";
+import { DocumentContext } from "../../documents/documentContext";
 
 import MarkdownEditorWindow from "./MarkdownEditorWindow";
 import PreviewWindow from "./PreviewWindow";
@@ -27,6 +28,7 @@ const Divider = styled.div`
 
 const Home = ({ inputRef, showSidebar }) => {
   const { theme } = useContext(ThemeContext);
+  const { activeDocument } = useContext(DocumentContext);
   const [showPreview, setShowPreview] = useState(false);
 
   const handlePreview = () => {
@@ -35,9 +37,18 @@ const Home = ({ inputRef, showSidebar }) => {
 
   return (
     <StyledHome showSidebar={showSidebar} theme={theme}>
-      <MarkdownEditorWindow ref={inputRef} showPreview={showPreview} />
-      <Divider theme={theme} />
-      <PreviewWindow showPreview={showPreview} handlePreview={handlePreview} />
+      {activeDocument ? (
+        <>
+          <MarkdownEditorWindow ref={inputRef} showPreview={showPreview} />
+          <Divider theme={theme} />
+          <PreviewWindow
+            showPreview={showPreview}
+            handlePreview={handlePreview}
+          />
+        </>
+      ) : (
+        <div>Hey babes</div>
+      )}
     </StyledHome>
   );
 };

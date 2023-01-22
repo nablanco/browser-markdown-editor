@@ -18,11 +18,16 @@ const DocumentContextWrapper = ({ children }) => {
     JSON.parse(localStorage.getItem("documents")) || defaultDocuments
   );
   const [activeDocument, setActiveDocument] = useState(
-    JSON.parse(localStorage.getItem("activeDocument")) || defaultDocuments[0]
+    JSON.parse(
+      localStorage.getItem("activeDocument") === "undefined"
+        ? "{}"
+        : localStorage.getItem("activeDocument")
+    ) || defaultDocuments[0]
   );
 
   useEffect(() => {
     const documents = JSON.parse(localStorage.getItem("documents"));
+    console.log("documents");
     if (documents) {
       setDocuments(documents);
     }
@@ -30,6 +35,7 @@ const DocumentContextWrapper = ({ children }) => {
 
   useEffect(() => {
     const activeDocument = JSON.parse(localStorage.getItem("activeDocument"));
+    console.log("active");
     if (activeDocument) {
       setActiveDocument(activeDocument);
     }
@@ -37,11 +43,9 @@ const DocumentContextWrapper = ({ children }) => {
 
   useEffect(() => {
     localStorage.setItem("documents", JSON.stringify(documents));
-  }, [documents]);
-
-  useEffect(() => {
     localStorage.setItem("activeDocument", JSON.stringify(activeDocument));
-  }, [activeDocument]);
+    console.log("both");
+  }, [documents]);
 
   // Activated on clicking "New Document" in Sidebar component
   const createDocument = () => {
@@ -67,11 +71,11 @@ const DocumentContextWrapper = ({ children }) => {
       content: "# Create your new markdown here!",
     };
 
+    setActiveDocument(newDocument);
+
     setDocuments((existingDocuments) => {
       return [...existingDocuments, newDocument];
     });
-
-    setActiveDocument(newDocument);
   };
 
   // Activated on "onChange" effect in markdown editor in Home component
@@ -105,14 +109,14 @@ const DocumentContextWrapper = ({ children }) => {
 
   // Activated on clicking delete icon in Navbar component and confirming in modular
   const deleteDocument = () => {
-    setDocuments((documents) =>
-      documents.filter((document) => {
-        return document.id !== activeDocument.id;
-      })
-    );
-    documents.length == 0
-      ? setActiveDocument([])
-      : setActiveDocument(documents[0]);
+    const existingDocuments = documents.filter((document) => {
+      return document.id !== activeDocument.id;
+    });
+    setDocuments(existingDocuments);
+    console.log(existingDocuments);
+    existingDocuments.length == 0
+      ? setActiveDocument(undefined)
+      : setActiveDocument(existingDocuments[0]);
   };
 
   // Activated on clicking any document listed in the Sidebar component
