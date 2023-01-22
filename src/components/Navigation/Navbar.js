@@ -32,6 +32,7 @@ const MenuButton = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 
   &:hover {
     background-color: #e46643;
@@ -91,6 +92,7 @@ const DocumentNameEditor = styled.input`
   font-size: 15px;
   line-height: 18px;
   padding: 0px;
+  caret-color: #e46643;
 
   &:hover {
     cursor: pointer;

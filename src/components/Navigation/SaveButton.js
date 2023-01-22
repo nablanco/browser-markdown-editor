@@ -23,6 +23,7 @@ const StyledSaveButton = styled.button`
   font-weight: 400;
   font-size: 15px;
   line-height: 18px;
+  cursor: pointer;
 
   &:hover {
     background-color: #f39765;
