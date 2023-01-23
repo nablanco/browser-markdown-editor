@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import Markdown from "markdown-to-jsx";
-import iconShowPreview from "../../assets/icon-show-preview.svg";
-import iconHidePreview from "../../assets/icon-hide-preview.svg";
 import { ThemeContext } from "../../themes/themeContext";
 import { DocumentContext } from "../../documents/documentContext";
+
+import PreviewButton from "./PreviewButton";
 
 const StyledPreview = styled.div`
   display: flex;
@@ -13,6 +13,10 @@ const StyledPreview = styled.div`
   width: ${({ showPreview }) => (showPreview ? "100%" : "50%")};
   color: ${(props) => props.theme.color.markdownbody};
   background-color: ${(props) => props.theme.background.main};
+
+  @media screen and (max-width: 768px) {
+    width: ${({ showPreview }) => (showPreview ? "100%" : "0%")};
+  }
 `;
 const TitleContainer = styled.div`
   height: 42px;
@@ -29,27 +33,7 @@ const TitleContainer = styled.div`
   color: ${({ theme }) => theme.color.sectionheader};
   background-color: ${({ theme }) => theme.background.sectionheader};
 `;
-
-const PreviewButton = styled.button`
-  height: 20px;
-  width: 18px;
-  margin-right: 24px;
-  padding: 0%;
-  background-color: ${({ theme }) => theme.background.sectionheader};
-  cursor: pointer;
-  border: none;
-
-  &:hover {
-    color: #e46643;
-  }
-`;
-const PreviewIcon = styled.img`
-  &:hover {
-    filter: invert(55%) sepia(52%) saturate(4781%) hue-rotate(339deg)
-      brightness(99%) contrast(80%);
-  }
-`;
-
+const ShowMarkdownButton = styled(PreviewButton)``;
 const MarkdownContainer = styled.div`
   height: calc(100% - 120px);
   padding-left: 16px;
@@ -65,9 +49,11 @@ const PreviewWindow = ({ showPreview, handlePreview }) => {
     <StyledPreview theme={theme} showPreview={showPreview}>
       <TitleContainer theme={theme}>
         PREVIEW
-        <PreviewButton theme={theme} onClick={() => handlePreview()}>
-          <PreviewIcon src={showPreview ? iconHidePreview : iconShowPreview} />
-        </PreviewButton>
+        <ShowMarkdownButton
+          showPreview={showPreview}
+          handlePreview={handlePreview}
+          isPreviewWindow={true}
+        />
       </TitleContainer>
       <MarkdownContainer>
         <Markdown>{activeDocument ? activeDocument.content : "asdf"}</Markdown>

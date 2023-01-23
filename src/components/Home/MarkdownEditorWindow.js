@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { ThemeContext } from "../../themes/themeContext";
 import { DocumentContext } from "../../documents/documentContext";
 
+import PreviewButton from "./PreviewButton";
+
 const StyledEditorContainer = styled.div`
   display: ${({ showPreview }) => (showPreview ? "none" : "flex")};
   flex-flow: column nowrap;
@@ -10,6 +12,10 @@ const StyledEditorContainer = styled.div`
   width: 50%;
   outline: none;
   border: none;
+
+  @media screen and (max-width: 768px) {
+    width: ${({ showPreview }) => (showPreview ? "0%" : "1000%")};
+  }
 `;
 const TitleContainer = styled.div`
   height: 42px;
@@ -22,8 +28,15 @@ const TitleContainer = styled.div`
   padding-left: 16px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   color: ${({ theme }) => theme.color.sectionheader};
   background-color: ${({ theme }) => theme.background.sectionheader};
+`;
+const ShowPreviewButton = styled(PreviewButton)`
+  display: none;
+  @media screen and (max-width: 768px) {
+    display: block;
+  }
 `;
 const Editor = styled.textarea`
   height: calc(100% - 120px);
@@ -44,10 +57,16 @@ const MarkdownEditorWindow = forwardRef((props, inputRef) => {
   const { activeDocument, onDocumentContentChange } =
     useContext(DocumentContext);
 
-  console.log({ activeDocument });
   return (
     <StyledEditorContainer showPreview={props.showPreview}>
-      <TitleContainer theme={theme}>MARKDOWN</TitleContainer>
+      <TitleContainer theme={theme}>
+        MARKDOWN
+        <ShowPreviewButton
+          showPreview={props.showPreview}
+          handlePreview={props.handlePreview}
+          isPreviewWindow={false}
+        />
+      </TitleContainer>
       <Editor
         type="text"
         value={activeDocument.content}

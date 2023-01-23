@@ -23,6 +23,10 @@ const Divider = styled.div`
   height: 100%;
   width: 1px;
   background-color: ${({ theme }) => theme.divider};
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 `;
 const CreateDocumentMessage = styled.div`
   margin-top: 12px;
@@ -48,7 +52,11 @@ const Home = ({ inputRef, showSidebar }) => {
     <StyledHome showSidebar={showSidebar} theme={theme}>
       {activeDocument ? (
         <>
-          <MarkdownEditorWindow ref={inputRef} showPreview={showPreview} />
+          <MarkdownEditorWindow
+            ref={inputRef}
+            showPreview={showPreview}
+            handlePreview={handlePreview}
+          />
           <Divider theme={theme} />
           <PreviewWindow
             showPreview={showPreview}
