@@ -20,6 +20,10 @@ const StyledNavbar = styled.div`
     ${({ showSidebar }) => (showSidebar ? "250px" : "0px")}
   );
   transition: 0.3s;
+
+  @media screen and (max-width: 768px) {
+    height: 56px;
+  }
 `;
 const LeftContainer = styled.div`
   display: flex;
@@ -36,6 +40,11 @@ const MenuButton = styled.div`
 
   &:hover {
     background-color: #e46643;
+  }
+
+  @media screen and (max-width: 768px) {
+    height: 56px;
+    width: 56px;
   }
 `;
 const MenuIcon = styled.img``;
@@ -76,6 +85,10 @@ const DocumentContainer = styled.div`
   @media screen and (max-width: 1020px) {
     margin-left: 24px;
   }
+
+  @media screen and (max-width: 768px) {
+    height: 18px;
+  }
 `;
 const DocumentIcon = styled.img`
   height: 16px;
@@ -91,6 +104,11 @@ const DocumentNameContainer = styled.div`
   margin-left: 16px;
   display: flex;
   flex-flow: column nowrap;
+`;
+const DocumentName = styled.div`
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 `;
 const DocumentNameEditor = styled.input`
   width: 400px;
@@ -112,6 +130,10 @@ const DocumentNameEditor = styled.input`
   &:focus {
     outline: none;
     border-bottom: 1px solid #ffffff;
+  }
+  @media screen and (max-width: 767px) {
+    width: calc(100vw - 216px);
+    max-width: 400px;
   }
 `;
 const RightContainer = styled.div`
@@ -143,7 +165,7 @@ const Navbar = ({ showSidebar, handleSidebar, handleEnter, setModalOpen }) => {
         <DocumentContainer>
           <DocumentIcon src={iconDocument} />
           <DocumentNameContainer>
-            Document Name
+            <DocumentName>Document Name</DocumentName>
             <DocumentNameEditor
               value={
                 activeDocument ? activeDocument.name : "no available document"
