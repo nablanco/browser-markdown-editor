@@ -1,5 +1,6 @@
 {
   "name": "browser-markdown-editor",
+  "homepage": "https://nablanco.github.io/browser-markdown-editor/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
