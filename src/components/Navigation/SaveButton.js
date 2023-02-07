@@ -26,7 +26,7 @@ const StyledSaveButton = styled.button`
   cursor: pointer;
 
   &:hover {
-    background-color: #f39765;
+    background-color: ${({ disabled }) => (disabled ? "#e46643" : "#f39765")};
   }
 
   @media screen and (max-width: 768px) {
@@ -47,10 +47,13 @@ const Text = styled.div`
 `;
 
 const SaveButton = () => {
-  const { saveDocument } = useContext(DocumentContext);
+  const { documents, saveDocument } = useContext(DocumentContext);
 
   return (
-    <StyledSaveButton onClick={() => saveDocument()}>
+    <StyledSaveButton
+      onClick={() => saveDocument()}
+      disabled={documents.length === 0 ? true : false}
+    >
       <SaveIcon src={iconSave} />
       <Text>Save Changes</Text>
     </StyledSaveButton>

@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import iconDelete from "../../assets/icon-delete.svg";
+
+import { DocumentContext } from "../../documents/documentContext";
 
 const StyledDeleteButton = styled.button`
   height: 20px;
@@ -11,24 +13,30 @@ const StyledDeleteButton = styled.button`
   cursor: pointer;
   border: none;
 
-  &:hover {
+  /* &:hover {
     color: #e46643;
-  }
+  } */
 `;
 const DeleteIcon = styled.img`
   &:hover {
-    filter: invert(55%) sepia(52%) saturate(4781%) hue-rotate(339deg)
-      brightness(99%) contrast(80%);
+    filter: ${({ disabled }) =>
+      disabled
+        ? ""
+        : "invert(55%) sepia(52%) saturate(4781%) hue-rotate(339deg) brightness(99%) contrast(80%)"};
   }
 `;
 
 const DeleteButton = ({ setModalOpen }) => {
+  const { documents } = useContext(DocumentContext);
+
   return (
     <StyledDeleteButton
       onClick={() => {
         setModalOpen(true);
       }}
+      disabled={documents.length === 0 ? true : false}
     >
+      {console.log(documents.length === 0)}
       <DeleteIcon src={iconDelete} />
     </StyledDeleteButton>
   );

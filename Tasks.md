@@ -12,7 +12,7 @@ Outstanding Issues:
   - Delete Button
     - (done) Build in separate component
     - (done) Uses functionality from DocumentContext. Removes the currently activeDocument in localStorage from documents array. Then replaces with first document in document array.
-    - (!!!) Need to fix issues related to no remaining documents in documents array.
+    - (done) Need to fix issues related to no remaining documents in documents array.
 - Build Sidebar
   - (done) General Structure
   - (done) Needs to push Navbar and Home components to side when active
