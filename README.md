@@ -1,4 +1,4 @@
-# Frontend Mentor - In-browser markdown editor solution
+# In-browser markdown editor
 
 ## Table of contents
 
@@ -31,7 +31,7 @@ Users should be able to:
 
 ### Links
 
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Live Site URL: [In-browser markdown editor] (https://nablanco.github.io/browser-markdown-editor/)
 
 ## My process
 
@@ -49,4 +49,4 @@ Users should be able to:
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
+- Website - [nicholasblanco.com](https://nicholasblanco.com/)
