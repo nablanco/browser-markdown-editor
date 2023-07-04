@@ -2,7 +2,7 @@ import React, { useState, useEffect, createContext } from "react";
 import themes from "./themes";
 import PropTypes from "prop-types";
 
-export const ThemeContext = createContext(themes.light);
+export const ThemeContext = createContext(themes.dark);
 
 /* eslint-disable react/prop-types */
 

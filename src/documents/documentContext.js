@@ -94,7 +94,7 @@ const DocumentContextWrapper = ({ children }) => {
     });
   };
 
-  // Actived on clicking "Save Changes" button in Navbar component
+  // Activated on clicking "Save Changes" button in Navbar component
   const saveDocument = () => {
     setDocuments((existingDocuments) => {
       return existingDocuments.filter((document) => {
