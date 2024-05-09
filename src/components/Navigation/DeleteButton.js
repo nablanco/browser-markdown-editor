@@ -36,7 +36,6 @@ const DeleteButton = ({ setModalOpen }) => {
       }}
       disabled={documents.length === 0 ? true : false}
     >
-      {console.log(documents.length === 0)}
       <DeleteIcon src={iconDelete} />
     </StyledDeleteButton>
   );

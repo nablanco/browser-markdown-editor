@@ -3,7 +3,9 @@ import defaultDocuments from "./data.json";
 import { v4 as uuidv4 } from "uuid";
 
 export const DocumentContext = createContext({
-  documents: JSON.parse(localStorage.getItem("documents")) || defaultDocuments,
+  documents:
+    JSON.parse(localStorage.getItem("browser-markdown-documents")) ||
+    defaultDocuments,
   activeDocument: "",
   createDocument: {},
   deleteDocument: {},
@@ -15,36 +17,44 @@ export const DocumentContext = createContext({
 
 const DocumentContextWrapper = ({ children }) => {
   const [documents, setDocuments] = useState(
-    JSON.parse(localStorage.getItem("documents")) || defaultDocuments
+    JSON.parse(localStorage.getItem("documents-browser-markdown")) ||
+      defaultDocuments
   );
   const [activeDocument, setActiveDocument] = useState(
     JSON.parse(
-      localStorage.getItem("activeDocument") === "undefined"
+      localStorage.getItem("activeDocument-browser-markdown") === "undefined"
         ? "{}"
-        : localStorage.getItem("activeDocument")
+        : localStorage.getItem("activeDocument-browser-markdown")
     ) || defaultDocuments[0]
   );
 
   useEffect(() => {
-    const documents = JSON.parse(localStorage.getItem("documents"));
-    console.log("documents");
+    const documents = JSON.parse(
+      localStorage.getItem("documents-browser-markdown")
+    );
     if (documents) {
       setDocuments(documents);
     }
   }, []);
 
   useEffect(() => {
-    const activeDocument = JSON.parse(localStorage.getItem("activeDocument"));
-    console.log("active");
+    const activeDocument = JSON.parse(
+      localStorage.getItem("activeDocument-browser-markdown")
+    );
     if (activeDocument) {
       setActiveDocument(activeDocument);
     }
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("documents", JSON.stringify(documents));
-    localStorage.setItem("activeDocument", JSON.stringify(activeDocument));
-    console.log("both");
+    localStorage.setItem(
+      "documents-browser-markdown",
+      JSON.stringify(documents)
+    );
+    localStorage.setItem(
+      "activeDocument-browser-markdown",
+      JSON.stringify(activeDocument)
+    );
   }, [documents]);
 
   // Activated on clicking "New Document" in Sidebar component
@@ -113,7 +123,6 @@ const DocumentContextWrapper = ({ children }) => {
       return document.id !== activeDocument.id;
     });
     setDocuments(existingDocuments);
-    console.log(existingDocuments);
     existingDocuments.length == 0
       ? setActiveDocument(undefined)
       : setActiveDocument(existingDocuments[0]);

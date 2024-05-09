@@ -162,7 +162,6 @@ const App = () => {
 
   const handleEnter = () => {
     inputRef.current.focus();
-    console.log(inputRef.current);
   };
 
   return (

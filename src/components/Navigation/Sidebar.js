@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import iconDocument from "../../assets/icon-document.svg";
 
@@ -90,9 +90,6 @@ const ThemeContainer = styled.div`
 const Sidebar = ({ showSidebar, handleSidebar }) => {
   const { documents, changeActiveDocument } = useContext(DocumentContext);
 
-  useEffect(() => {
-    console.log(documents);
-  }, [documents]);
   return (
     <StyledSidebar showSidebar={showSidebar}>
       <DocumentsContainer>
