@@ -8,12 +8,12 @@ export const ThemeContext = createContext(themes.dark);
 
 const ThemeContextWrapper = ({ children }) => {
   const [theme, setTheme] = useState(
-    JSON.parse(localStorage.getItem("theme-browser-markdown")) || themes.dark
+    JSON.parse(localStorage.getItem("theme-browserMarkdownApp")) || themes.dark
   );
 
   useEffect(() => {
     const currentTheme = JSON.parse(
-      localStorage.getItem("theme-browser-markdown")
+      localStorage.getItem("theme-browserMarkdownApp")
     );
     if (currentTheme) {
       setTheme(currentTheme);
@@ -21,7 +21,7 @@ const ThemeContextWrapper = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("theme-browser-markdown", JSON.stringify(theme));
+    localStorage.setItem("theme-browserMarkdownApp", JSON.stringify(theme));
   }, [theme]);
 
   const handleThemeChange = () => {

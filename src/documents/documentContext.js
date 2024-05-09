@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 
 export const DocumentContext = createContext({
   documents:
-    JSON.parse(localStorage.getItem("browser-markdown-documents")) ||
+    JSON.parse(localStorage.getItem("documents-browserMarkdownApp")) ||
     defaultDocuments,
   activeDocument: "",
   createDocument: {},
@@ -17,20 +17,20 @@ export const DocumentContext = createContext({
 
 const DocumentContextWrapper = ({ children }) => {
   const [documents, setDocuments] = useState(
-    JSON.parse(localStorage.getItem("documents-browser-markdown")) ||
+    JSON.parse(localStorage.getItem("documents-browserMarkdownApp")) ||
       defaultDocuments
   );
   const [activeDocument, setActiveDocument] = useState(
     JSON.parse(
-      localStorage.getItem("activeDocument-browser-markdown") === "undefined"
+      localStorage.getItem("activeDocument-browserMarkdownApp") === "undefined"
         ? "{}"
-        : localStorage.getItem("activeDocument-browser-markdown")
+        : localStorage.getItem("activeDocument-browserMarkdownApp")
     ) || defaultDocuments[0]
   );
 
   useEffect(() => {
     const documents = JSON.parse(
-      localStorage.getItem("documents-browser-markdown")
+      localStorage.getItem("documents-browserMarkdownApp")
     );
     if (documents) {
       setDocuments(documents);
@@ -39,7 +39,7 @@ const DocumentContextWrapper = ({ children }) => {
 
   useEffect(() => {
     const activeDocument = JSON.parse(
-      localStorage.getItem("activeDocument-browser-markdown")
+      localStorage.getItem("activeDocument-browserMarkdownApp")
     );
     if (activeDocument) {
       setActiveDocument(activeDocument);
@@ -48,11 +48,11 @@ const DocumentContextWrapper = ({ children }) => {
 
   useEffect(() => {
     localStorage.setItem(
-      "documents-browser-markdown",
+      "documents-browserMarkdownApp",
       JSON.stringify(documents)
     );
     localStorage.setItem(
-      "activeDocument-browser-markdown",
+      "activeDocument-browserMarkdownApp",
       JSON.stringify(activeDocument)
     );
   }, [documents]);
